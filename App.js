@@ -4,6 +4,10 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import Main from './components/MainComponent';
 import {AppearanceProvider} from 'react-native-appearance';
+import {Provider} from 'react-redux';
+import {ConfigureStore} from './redux/Store';
+
+const store=ConfigureStore();
 
 export default function App(props) {
   
@@ -28,9 +32,11 @@ export default function App(props) {
   }
   
   return (
-    <AppearanceProvider>
-      <Main/>
-    </AppearanceProvider>
+    <Provider store={store}>
+      <AppearanceProvider>
+        <Main/>
+      </AppearanceProvider>
+    </Provider>
   );
 }
 

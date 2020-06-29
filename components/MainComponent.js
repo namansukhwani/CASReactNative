@@ -8,6 +8,16 @@ import {useColorScheme} from 'react-native-appearance';
 import Home from './HomeComponent';
 import Login from './LoginComponent';
 import Menu from './MenuComponent';
+import {connect,useDispatch,useSelector} from 'react-redux';
+import {loginFunction} from '../redux/Actions';
+
+{/*const mapStateToProps=state=>({
+    isUserLogin:state.user
+});
+
+const mapDispatchToProps=dispatch =>({
+    loginFunction:()=>dispatch(loginFunction())
+});*/}
 
 const Stack=createStackNavigator();
 const Tab=createBottomTabNavigator();
@@ -58,10 +68,10 @@ function HomeNavigator()
 function Main(props)
 {   
     const colorMode=useColorScheme();
-    const [isUserLogin,setIsUserLogin]=useState(false);
-
+    const isUserLogin=useSelector(state=>state.user);
+    const dispatch=useDispatch();
     const login=()=>{
-        setIsUserLogin(true);
+        dispatch(loginFunction());
     }
 
     const LoginScreen=()=>{
@@ -94,4 +104,4 @@ function Main(props)
         </NavigationContainer>
     )
 }
-export default Main;
+export default  Main;
