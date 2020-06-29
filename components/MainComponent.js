@@ -8,16 +8,16 @@ import {useColorScheme} from 'react-native-appearance';
 import Home from './HomeComponent';
 import Login from './LoginComponent';
 import Menu from './MenuComponent';
-import {connect,useDispatch,useSelector} from 'react-redux';
+import {connect} from 'react-redux';
 import {loginFunction} from '../redux/Actions';
 
-{/*const mapStateToProps=state=>({
+const mapStateToProps=state=>({
     isUserLogin:state.user
 });
 
 const mapDispatchToProps=dispatch =>({
     loginFunction:()=>dispatch(loginFunction())
-});*/}
+});
 
 const Stack=createStackNavigator();
 const Tab=createBottomTabNavigator();
@@ -68,22 +68,17 @@ function HomeNavigator()
 function Main(props)
 {   
     const colorMode=useColorScheme();
-    const isUserLogin=useSelector(state=>state.user);
-    const dispatch=useDispatch();
-    const login=()=>{
-        dispatch(loginFunction());
-    }
 
     const LoginScreen=()=>{
         return(
-            <Login login={login}/>
+            <Login login={props.loginFunction}/>
         );
     }
 
     return(
         <NavigationContainer theme={colorMode === 'dark' ? myDarkTheme : myLightTheme}>
             <Stack.Navigator>
-                {isUserLogin ? (
+                {props.isUserLogin ? (
                     <Stack.Screen name="Home" component={HomeNavigator}
                         options={{
                             headerTitleAlign:'center',
@@ -104,4 +99,4 @@ function Main(props)
         </NavigationContainer>
     )
 }
-export default  Main;
+export default  connect(mapStateToProps,mapDispatchToProps)(Main);
