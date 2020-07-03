@@ -1,13 +1,16 @@
 import React from 'react';
-import { View,StyleSheet,StatusBar,Image} from 'react-native';
+import { View,StyleSheet,StatusBar,Image,ScrollView} from 'react-native';
 import {Button,Text, Item, Icon, Input} from 'native-base';
+import {useTheme} from '@react-navigation/native';
 
 
 function Login(props)
 {  
+    const {colors}=useTheme();
+
     return(
         <View style={{flex:1}}>
-            <StatusBar barStyle="default" />
+            <StatusBar barStyle={colors.statusBarColor==='#000' ? 'light-content':'dark-content'} backgroundColor={colors.statusBarColor} />
             <View style={styles.container}>
                 <Image style={styles.title} source={require('../shared/logoCAS.png')}/>
                 <Item rounded style={styles.inputBox} >
