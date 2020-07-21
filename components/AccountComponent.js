@@ -8,7 +8,7 @@ function Account()
     
     return(
         <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-            <StatusBar barStyle={colors.statusBarColor==='#000' ? 'light-content':'dark-content'} backgroundColor={colors.statusBarColor} />
+            <StatusBar barStyle={colors.statusBarColor==='#000' ? 'light-content':'dark-content'} backgroundColor={colors.background} />
             <Text style={{fontSize:20,fontWeight:'bold',color:colors.text}}>Account Settings</Text>
         </View>
     )

@@ -10,7 +10,7 @@ function Login(props)
 
     return(
         <View style={{flex:1}}>
-            <StatusBar barStyle={colors.statusBarColor==='#000' ? 'light-content':'dark-content'} backgroundColor={colors.statusBarColor} />
+            <StatusBar barStyle={colors.statusBarColor==='#000' ? 'light-content':'dark-content'} backgroundColor={colors.background} />
             <View style={styles.container}>
                 <Image style={styles.title} source={require('../shared/logoCAS.png')}/>
                 <Item rounded style={styles.inputBox} >
